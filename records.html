@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClinicCare Medical Records</title>
+    <link rel="stylesheet" href="assets/css/records.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">CC</div>
+          <div>
+            <h1>ClinicCare</h1>
+            <p>Clinical Management System</p>
+          </div>
+        </div>
+        <nav class="nav-list">
+          <a class="nav-item" href="dashboard.html">Dashboard</a>
+          <a class="nav-item" href="patients.html">Patients</a>
+          <a class="nav-item" href="appointments.html">Appointments</a>
+          <a class="nav-item" href="doctors.html">Doctors</a>
+          <a class="nav-item" href="departments.html">Departments</a>
+          <a class="nav-item active" href="records.html">Medical Records</a>
+          <a class="nav-item" href="billing.html">Billing</a>
+          <a class="nav-item" href="reports.html">Reports</a>
+          <a class="nav-item" href="settings.html">Settings</a>
+          <a class="nav-item logout" href="login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Electronic Health Records</p>
+            <h2>Medical records</h2>
+          </div>
+          <button class="btn primary">+ Upload Record</button>
+        </header>
+
+        <section class="records-table">
+          <div class="table-header">
+            <h3>Patient Records</h3>
+            <input class="search-input" type="search" placeholder="Search records" />
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Patient ID</th>
+                <th>Record Type</th>
+                <th>Date</th>
+                <th>Doctor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Emma Wilson</td>
+                <td>CL-0024</td>
+                <td>Blood Test Report</td>
+                <td>May 15, 2026</td>
+                <td>Dr. James King</td>
+              </tr>
+              <tr>
+                <td>Liam Johnson</td>
+                <td>CL-0179</td>
+                <td>X-Ray Images</td>
+                <td>May 14, 2026</td>
+                <td>Dr. Laura Green</td>
+              </tr>
+              <tr>
+                <td>Olivia Davis</td>
+                <td>CL-0092</td>
+                <td>MRI Scan Report</td>
+                <td>May 12, 2026</td>
+                <td>Dr. Mark Hill</td>
+              </tr>
+              <tr>
+                <td>Noah Thomas</td>
+                <td>CL-0217</td>
+                <td>Vaccination Card</td>
+                <td>May 10, 2026</td>
+                <td>Dr. Susan Lee</td>
+              </tr>
+              <tr>
+                <td>Sophia Martinez</td>
+                <td>CL-0156</td>
+                <td>Prescription Document</td>
+                <td>May 09, 2026</td>
+                <td>Dr. Robert King</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="assets/js/records.js"></script>
+  </body>
+</html>

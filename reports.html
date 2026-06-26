@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClinicCare Reports</title>
+    <link rel="stylesheet" href="assets/css/reports.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">CC</div>
+          <div>
+            <h1>ClinicCare</h1>
+            <p>Clinical Management System</p>
+          </div>
+        </div>
+        <nav class="nav-list">
+          <a class="nav-item" href="dashboard.html">Dashboard</a>
+          <a class="nav-item" href="patients.html">Patients</a>
+          <a class="nav-item" href="appointments.html">Appointments</a>
+          <a class="nav-item" href="doctors.html">Doctors</a>
+          <a class="nav-item" href="departments.html">Departments</a>
+          <a class="nav-item" href="records.html">Medical Records</a>
+          <a class="nav-item" href="billing.html">Billing</a>
+          <a class="nav-item active" href="reports.html">Reports</a>
+          <a class="nav-item" href="settings.html">Settings</a>
+          <a class="nav-item logout" href="login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Reports & Analytics</p>
+            <h2>Business reports</h2>
+          </div>
+          <button class="btn primary">+ Generate Report</button>
+        </header>
+
+        <section class="report-grid">
+          <article class="report-card">
+            <h3>Revenue Report</h3>
+            <p class="desc">Monthly and yearly revenue trends</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+
+          <article class="report-card">
+            <h3>Patient Statistics</h3>
+            <p class="desc">New, active, and inactive patients</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+
+          <article class="report-card">
+            <h3>Appointment Analysis</h3>
+            <p class="desc">Scheduling trends and utilization</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+
+          <article class="report-card">
+            <h3>Staff Performance</h3>
+            <p class="desc">Doctor performance metrics</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+
+          <article class="report-card">
+            <h3>Department Overview</h3>
+            <p class="desc">Department-wise statistics</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+
+          <article class="report-card">
+            <h3>Financial Summary</h3>
+            <p class="desc">Expenses, income, and profit</p>
+            <div class="chart-mini">Chart</div>
+            <button class="btn secondary">View Details</button>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="assets/js/reports.js"></script>
+  </body>
+</html>
