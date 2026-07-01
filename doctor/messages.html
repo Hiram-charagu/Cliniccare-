@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="messages.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a class="active" href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Messages</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="messages-layout">
+
+          <!-- INBOX LIST -->
+          <aside class="inbox-panel">
+            <div class="inbox-header">
+              <h2>Inbox</h2>
+              <button class="btn btn-primary btn-sm" id="openComposeModal">+ New</button>
+            </div>
+            <input class="portal-search" type="search" id="msgSearch" placeholder="Search messages…" />
+            <ul class="inbox-list" id="inboxList">
+              <li class="inbox-item active" data-msg="john">
+                <div class="inbox-avatar">JD</div>
+                <div class="inbox-info">
+                  <strong>John Doe</strong>
+                  <p>My blood pressure has been higher than usual…</p>
+                  <span>Today</span>
+                </div>
+                <span class="unread-dot"></span>
+              </li>
+              <li class="inbox-item" data-msg="amina">
+                <div class="inbox-avatar avatar-teal">AP</div>
+                <div class="inbox-info">
+                  <strong>Amina Patel</strong>
+                  <p>I've attached my Holter monitor report…</p>
+                  <span>Yesterday</span>
+                </div>
+                <span class="unread-dot"></span>
+              </li>
+              <li class="inbox-item" data-msg="clinic">
+                <div class="inbox-avatar avatar-gray">CL</div>
+                <div class="inbox-info">
+                  <strong>Clinic Admin</strong>
+                  <p>Your schedule for next week has been updated.</p>
+                  <span>Jun 30</span>
+                </div>
+              </li>
+              <li class="inbox-item" data-msg="lab">
+                <div class="inbox-avatar avatar-purple">LB</div>
+                <div class="inbox-info">
+                  <strong>Lab Team</strong>
+                  <p>Michael Brown's troponin results are ready.</p>
+                  <span>Jun 28</span>
+                </div>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- MESSAGE THREAD -->
+          <section class="thread-panel">
+            <div class="thread-header" id="threadHeader">
+              <div class="thread-avatar" id="threadAvatar">JD</div>
+              <div>
+                <strong id="threadSender">John Doe</strong>
+                <p id="threadDate">Today</p>
+              </div>
+            </div>
+
+            <div class="thread-body" id="threadBody">
+              <div class="message-bubble received" id="msg-john">
+                <p>Good morning, Dr. Chen. My blood pressure has been higher than usual the past few days despite taking my medication. Should I be concerned?</p>
+                <span class="msg-time">Today · 08:42 AM</span>
+              </div>
+              <div class="message-bubble received hidden" id="msg-amina">
+                <p>Hello Dr. Chen. I've attached my Holter monitor report from yesterday. Could you please review it before my next appointment?</p>
+                <span class="msg-time">Yesterday · 03:10 PM</span>
+              </div>
+              <div class="message-bubble received hidden" id="msg-clinic">
+                <p>Hi Dr. Chen. Your schedule for next week has been updated with two new patients. Please log in to the schedule page to review the changes.</p>
+                <span class="msg-time">Jun 30 · 11:00 AM</span>
+              </div>
+              <div class="message-bubble received hidden" id="msg-lab">
+                <p>Dr. Chen, Michael Brown's troponin results are now available in the records section. Results show no elevation — consistent with musculoskeletal aetiology.</p>
+                <span class="msg-time">Jun 28 · 09:30 AM</span>
+              </div>
+            </div>
+
+            <div class="thread-reply">
+              <textarea id="replyText" placeholder="Type a reply…" rows="2"></textarea>
+              <button class="btn btn-primary" id="sendReply">Send</button>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- COMPOSE MODAL -->
+    <div class="modal-backdrop" id="composeModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>New Message</h2>
+          <button class="modal-close" id="closeComposeModal">✕</button>
+        </div>
+        <form id="composeForm">
+          <div class="form-grid cols-1">
+            <div class="form-group">
+              <label for="msgTo">To</label>
+              <select id="msgTo">
+                <option>John Doe</option>
+                <option>Amina Patel</option>
+                <option>Michael Brown</option>
+                <option>Sarah Johnson</option>
+                <option>Liam Kim</option>
+                <option>Nina Roberts</option>
+                <option>Clinic Admin</option>
+                <option>Lab Team</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="msgSubject">Subject</label>
+              <input type="text" id="msgSubject" placeholder="Enter subject…" />
+            </div>
+            <div class="form-group">
+              <label for="msgBody">Message</label>
+              <textarea id="msgBody" rows="5" placeholder="Write your message…"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelCompose">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="messages.js"></script>
+  </body>
+</html>

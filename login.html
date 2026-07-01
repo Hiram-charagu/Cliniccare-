@@ -3,57 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ClinicCare Login</title>
-    <link rel="stylesheet" href="assets/css/login.css" />
+    <title>Sign In — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body>
-    <div class="login-container">
-      <div class="login-box">
-        <div class="login-header">
-          <div class="logo-icon">CC</div>
-          <h1>ClinicCare</h1>
-          <p>Clinical Management System</p>
-        </div>
+  <body class="login-page">
+    <nav class="auth-nav container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">CC</span>
+        <span>ClinicCare</span>
+      </a>
+      <a class="back-link" href="index.html">← Back to Home</a>
+    </nav>
 
-        <form class="login-form">
+    <main class="login-shell container">
+      <section class="login-panel">
+        <p class="eyebrow">Secure Access</p>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your ClinicCare account to continue.</p>
+
+        <div id="errorMessage" class="error-alert" hidden></div>
+
+        <form id="loginForm" class="login-form">
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" required />
+            <input type="email" id="email" placeholder="you@cliniccare.com" autocomplete="email" required />
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="••••••••" required />
+            <div class="password-row">
+              <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required />
+              <button type="button" id="passwordToggle">Show</button>
+            </div>
           </div>
 
-          <div class="remember-me">
-            <input type="checkbox" id="remember" />
-            <label for="remember">Remember me</label>
+          <div class="form-meta">
+            <label><input type="checkbox" /> Remember me</label>
+            <a href="#">Forgot password?</a>
           </div>
 
-          <button type="submit" class="btn-submit">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block" style="min-height:50px;font-size:1rem">Sign In</button>
         </form>
 
-        <div class="login-footer">
-          <p>Don't have an account? <a href="#">Contact Administrator</a></p>
-          <p><a href="#">Forgot Password?</a></p>
-        </div>
-      </div>
+        <p class="auth-switch">Don't have an account? <a href="signup.html">Create one</a></p>
+      </section>
 
-      <div class="login-side">
-        <div class="side-content">
-          <h2>Welcome to ClinicCare</h2>
-          <p>A comprehensive clinical management system designed for modern healthcare providers.</p>
-          <ul>
-            <li>✓ Secure Patient Management</li>
-            <li>✓ Appointment Scheduling</li>
-            <li>✓ Digital Health Records</li>
-            <li>✓ Billing & Invoicing</li>
-            <li>✓ Real-time Analytics</li>
-          </ul>
+      <aside class="login-aside">
+        <h2>Why ClinicCare?</h2>
+        <div class="benefit-list">
+          <div>
+            <strong>Easy Scheduling</strong>
+            <span>Book and manage appointments in seconds with automated confirmations.</span>
+          </div>
+          <div>
+            <strong>Digital Health Records</strong>
+            <span>Access complete patient history, lab results, and clinical notes anytime.</span>
+          </div>
+          <div>
+            <strong>Secure & Role-Based</strong>
+            <span>Separate portals keep admin, doctor, and patient data appropriately isolated.</span>
+          </div>
+          <div>
+            <strong>Operational Clarity</strong>
+            <span>Real-time dashboards give every role exactly the data they need.</span>
+          </div>
         </div>
-      </div>
-    </div>
+      </aside>
+    </main>
 
     <script src="assets/js/login.js"></script>
   </body>

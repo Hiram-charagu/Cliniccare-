@@ -1,0 +1,116 @@
+/* ============================================================
+   prescriptions.css — Prescriptions page styles
+   ============================================================ */
+
+.rx-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.rx-tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.rx-tab:hover {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+}
+
+.rx-tab.active {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+  font-weight: 700;
+}
+
+/* ── PRESCRIPTION CARDS ── */
+.prescription-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.prescription-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  flex-wrap: wrap;
+}
+
+.prescription-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.06);
+}
+
+.prescription-card.hidden {
+  display: none;
+}
+
+.prescription-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: var(--purple-tint);
+  color: var(--purple);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.rx-icon-yellow {
+  background: var(--yellow-tint);
+  color: var(--yellow);
+}
+
+.rx-icon-gray {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.prescription-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.prescription-info h4 {
+  margin: 0 0 3px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.prescription-info p {
+  margin: 0;
+  font-size: 0.81rem;
+  color: var(--muted);
+}
+
+.prescription-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ── WIDE MODAL ── */
+.modal-wide {
+  max-width: 520px;
+}

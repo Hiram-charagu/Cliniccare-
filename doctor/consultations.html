@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultations — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="consultations.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a class="active" href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Consultations</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="section-actions">
+          <input class="portal-search" type="search" id="consultSearch" placeholder="Search consultations…" />
+          <button class="btn btn-primary" id="openNewConsult">+ New Consultation</button>
+        </div>
+
+        <div class="consultation-grid" id="consultGrid">
+
+          <article class="consultation-card">
+            <div class="consultation-header">
+              <div class="consult-patient">
+                <div class="consult-avatar">JD</div>
+                <div>
+                  <h4>John Doe</h4>
+                  <p class="consult-sub">P-001 · Hypertension</p>
+                </div>
+              </div>
+              <div class="consult-meta">
+                <span class="consultation-date">Jul 01, 2026</span>
+                <span class="badge badge-blue">Completed</span>
+              </div>
+            </div>
+            <div class="consultation-content">
+              <p><strong>Chief Complaint:</strong> Persistent headache and elevated BP readings at home.</p>
+              <p><strong>Assessment:</strong> BP 155/95 mmHg. Medication dose adjusted. Lifestyle advice given.</p>
+              <p><strong>Plan:</strong> Increase Amlodipine to 10 mg. Follow-up in 4 weeks.</p>
+            </div>
+            <div class="consultation-actions">
+              <button class="btn btn-ghost btn-sm" data-id="1">Edit Notes</button>
+              <button class="btn btn-ghost btn-sm" data-id="1">Print Report</button>
+            </div>
+          </article>
+
+          <article class="consultation-card">
+            <div class="consultation-header">
+              <div class="consult-patient">
+                <div class="consult-avatar avatar-teal">AP</div>
+                <div>
+                  <h4>Amina Patel</h4>
+                  <p class="consult-sub">P-002 · Arrhythmia</p>
+                </div>
+              </div>
+              <div class="consult-meta">
+                <span class="consultation-date">Jun 28, 2026</span>
+                <span class="badge badge-blue">Completed</span>
+              </div>
+            </div>
+            <div class="consultation-content">
+              <p><strong>Chief Complaint:</strong> Occasional palpitations and mild shortness of breath.</p>
+              <p><strong>Assessment:</strong> ECG shows occasional PVCs. Holter monitor ordered.</p>
+              <p><strong>Plan:</strong> 24-hr Holter monitor. Avoid caffeine. Review results in 2 weeks.</p>
+            </div>
+            <div class="consultation-actions">
+              <button class="btn btn-ghost btn-sm" data-id="2">Edit Notes</button>
+              <button class="btn btn-ghost btn-sm" data-id="2">Print Report</button>
+            </div>
+          </article>
+
+          <article class="consultation-card">
+            <div class="consultation-header">
+              <div class="consult-patient">
+                <div class="consult-avatar avatar-red">MB</div>
+                <div>
+                  <h4>Michael Brown</h4>
+                  <p class="consult-sub">P-003 · Heart Failure</p>
+                </div>
+              </div>
+              <div class="consult-meta">
+                <span class="consultation-date">Jul 03, 2026</span>
+                <span class="badge badge-yellow">Pending Review</span>
+              </div>
+            </div>
+            <div class="consultation-content">
+              <p><strong>Chief Complaint:</strong> Worsening ankle oedema and fatigue over past week.</p>
+              <p><strong>Assessment:</strong> BNP elevated. Chest X-ray shows mild pulmonary congestion.</p>
+              <p><strong>Plan:</strong> Increase Furosemide. Fluid restriction 1.5 L/day. Admit for monitoring.</p>
+            </div>
+            <div class="consultation-actions">
+              <button class="btn btn-ghost btn-sm" data-id="3">Edit Notes</button>
+              <button class="btn btn-ghost btn-sm" data-id="3">Print Report</button>
+            </div>
+          </article>
+
+          <article class="consultation-card">
+            <div class="consultation-header">
+              <div class="consult-patient">
+                <div class="consult-avatar avatar-green">SJ</div>
+                <div>
+                  <h4>Sarah Johnson</h4>
+                  <p class="consult-sub">P-004 · Chest Pain</p>
+                </div>
+              </div>
+              <div class="consult-meta">
+                <span class="consultation-date">Jul 07, 2026</span>
+                <span class="badge badge-green">New</span>
+              </div>
+            </div>
+            <div class="consultation-content">
+              <p><strong>Chief Complaint:</strong> Intermittent sharp chest pain for 3 days, no radiation.</p>
+              <p><strong>Assessment:</strong> ECG normal. Troponin pending. Likely musculoskeletal.</p>
+              <p><strong>Plan:</strong> Await troponin result. NSAIDs for pain. Stress test scheduled.</p>
+            </div>
+            <div class="consultation-actions">
+              <button class="btn btn-ghost btn-sm" data-id="4">Edit Notes</button>
+              <button class="btn btn-ghost btn-sm" data-id="4">Print Report</button>
+            </div>
+          </article>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- NEW CONSULTATION MODAL -->
+    <div class="modal-backdrop" id="newConsultModal">
+      <div class="modal modal-wide">
+        <div class="modal-header">
+          <h2>New Consultation</h2>
+          <button class="modal-close" id="closeNewConsult">✕</button>
+        </div>
+        <form id="consultForm">
+          <div class="form-grid cols-1">
+            <div class="form-group">
+              <label for="consultPatient">Patient</label>
+              <select id="consultPatient" required>
+                <option value="">Select patient</option>
+                <option>John Doe</option>
+                <option>Amina Patel</option>
+                <option>Michael Brown</option>
+                <option>Sarah Johnson</option>
+                <option>Liam Kim</option>
+                <option>Nina Roberts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="consultComplaint">Chief Complaint</label>
+              <textarea id="consultComplaint" placeholder="Patient's main complaint…"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="consultAssessment">Assessment</label>
+              <textarea id="consultAssessment" placeholder="Clinical findings and assessment…"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="consultPlan">Plan</label>
+              <textarea id="consultPlan" placeholder="Treatment plan and follow-up…"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelNewConsult">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Consultation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="consultations.js"></script>
+  </body>
+</html>

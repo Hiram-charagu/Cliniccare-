@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Records — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="records.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a class="active" href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Patient Records</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="records-filter-row">
+          <button class="record-tab active" data-filter="all">All</button>
+          <button class="record-tab" data-filter="lab">Lab Results</button>
+          <button class="record-tab" data-filter="imaging">Imaging</button>
+          <button class="record-tab" data-filter="report">Reports</button>
+        </div>
+
+        <div class="section-actions">
+          <input class="portal-search" type="search" id="recordSearch" placeholder="Search records…" />
+          <button class="btn btn-primary" id="openUploadModal">+ Upload Record</button>
+        </div>
+
+        <div class="records-grid" id="recordsGrid">
+
+          <article class="record-card" data-status="lab">
+            <div class="record-icon record-icon-blue">BT</div>
+            <div class="record-info">
+              <h3>Blood Test Report — John Doe</h3>
+              <p>Jul 01, 2026 · Lab Team</p>
+            </div>
+            <span class="badge badge-green">Ready</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+          <article class="record-card" data-status="imaging">
+            <div class="record-icon record-icon-purple">XR</div>
+            <div class="record-info">
+              <h3>Chest X-Ray — Michael Brown</h3>
+              <p>Jul 03, 2026 · Radiology</p>
+            </div>
+            <span class="badge badge-green">Ready</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+          <article class="record-card" data-status="lab">
+            <div class="record-icon record-icon-blue">EC</div>
+            <div class="record-info">
+              <h3>ECG Report — Amina Patel</h3>
+              <p>Jun 28, 2026 · Cardiology Lab</p>
+            </div>
+            <span class="badge badge-green">Ready</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+          <article class="record-card" data-status="report">
+            <div class="record-icon record-icon-gray">VS</div>
+            <div class="record-info">
+              <h3>Visit Summary — Liam Kim</h3>
+              <p>Jun 20, 2026 · Dr. Emily Chen</p>
+            </div>
+            <span class="badge badge-blue">Archived</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+          <article class="record-card" data-status="lab">
+            <div class="record-icon record-icon-blue">BP</div>
+            <div class="record-info">
+              <h3>BP Monitoring Log — John Doe</h3>
+              <p>Jun 15, 2026 · Patient Submitted</p>
+            </div>
+            <span class="badge badge-green">Ready</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+          <article class="record-card" data-status="imaging">
+            <div class="record-icon record-icon-purple">MR</div>
+            <div class="record-info">
+              <h3>MRI Report — Nina Roberts</h3>
+              <p>May 30, 2026 · Radiology</p>
+            </div>
+            <span class="badge badge-blue">Archived</span>
+            <button class="btn btn-ghost btn-sm">View</button>
+          </article>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- UPLOAD MODAL -->
+    <div class="modal-backdrop" id="uploadModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Upload Record</h2>
+          <button class="modal-close" id="closeUploadModal">✕</button>
+        </div>
+        <form id="uploadForm">
+          <div class="form-grid cols-1">
+            <div class="form-group">
+              <label for="uploadPatient">Patient</label>
+              <select id="uploadPatient" required>
+                <option value="">Select patient</option>
+                <option>John Doe</option>
+                <option>Amina Patel</option>
+                <option>Michael Brown</option>
+                <option>Sarah Johnson</option>
+                <option>Liam Kim</option>
+                <option>Nina Roberts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="recordType">Record Type</label>
+              <select id="recordType">
+                <option>Lab Results</option>
+                <option>Imaging</option>
+                <option>Visit Report</option>
+                <option>Prescription</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="recordTitle">Title</label>
+              <input type="text" id="recordTitle" placeholder="e.g. Blood Test Report" required />
+            </div>
+            <div class="form-group">
+              <label for="recordFile">File</label>
+              <input type="file" id="recordFile" accept=".pdf,.jpg,.png" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelUpload">Cancel</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="records.js"></script>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prescriptions — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="prescriptions.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a class="active" href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Prescriptions</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="rx-tabs">
+          <button class="rx-tab active" data-filter="all">All</button>
+          <button class="rx-tab" data-filter="active">Active</button>
+          <button class="rx-tab" data-filter="pending">Pending Sign</button>
+          <button class="rx-tab" data-filter="expired">Expired</button>
+        </div>
+
+        <div class="section-actions">
+          <input class="portal-search" type="search" id="rxSearch" placeholder="Search prescriptions…" />
+          <button class="btn btn-primary" id="openNewRx">+ New Prescription</button>
+        </div>
+
+        <div class="prescription-grid" id="rxGrid">
+
+          <article class="prescription-card" data-status="active">
+            <div class="prescription-icon">Rx</div>
+            <div class="prescription-info">
+              <h4>Amlodipine 10 mg</h4>
+              <p>John Doe · Once daily · Issued Jul 01, 2026</p>
+            </div>
+            <span class="badge badge-green">Active</span>
+            <div class="prescription-actions">
+              <button class="btn btn-ghost btn-sm">Edit</button>
+              <button class="btn btn-ghost btn-sm">Print</button>
+              <button class="btn btn-primary btn-sm">Refill</button>
+            </div>
+          </article>
+
+          <article class="prescription-card" data-status="active">
+            <div class="prescription-icon">Rx</div>
+            <div class="prescription-info">
+              <h4>Metoprolol 50 mg</h4>
+              <p>Amina Patel · Twice daily · Issued Jun 28, 2026</p>
+            </div>
+            <span class="badge badge-green">Active</span>
+            <div class="prescription-actions">
+              <button class="btn btn-ghost btn-sm">Edit</button>
+              <button class="btn btn-ghost btn-sm">Print</button>
+              <button class="btn btn-primary btn-sm">Refill</button>
+            </div>
+          </article>
+
+          <article class="prescription-card" data-status="pending">
+            <div class="prescription-icon rx-icon-yellow">Rx</div>
+            <div class="prescription-info">
+              <h4>Furosemide 40 mg</h4>
+              <p>Michael Brown · Once daily · Draft Jul 03, 2026</p>
+            </div>
+            <span class="badge badge-yellow">Pending Sign</span>
+            <div class="prescription-actions">
+              <button class="btn btn-ghost btn-sm">Edit</button>
+              <button class="btn btn-primary btn-sm">Sign</button>
+            </div>
+          </article>
+
+          <article class="prescription-card" data-status="active">
+            <div class="prescription-icon">Rx</div>
+            <div class="prescription-info">
+              <h4>Atorvastatin 20 mg</h4>
+              <p>Liam Kim · Once nightly · Issued Jun 20, 2026</p>
+            </div>
+            <span class="badge badge-green">Active</span>
+            <div class="prescription-actions">
+              <button class="btn btn-ghost btn-sm">Edit</button>
+              <button class="btn btn-ghost btn-sm">Print</button>
+              <button class="btn btn-primary btn-sm">Refill</button>
+            </div>
+          </article>
+
+          <article class="prescription-card" data-status="expired">
+            <div class="prescription-icon rx-icon-gray">Rx</div>
+            <div class="prescription-info">
+              <h4>Bisoprolol 5 mg</h4>
+              <p>Nina Roberts · Once daily · Issued Apr 10, 2026</p>
+            </div>
+            <span class="badge badge-red">Expired</span>
+            <div class="prescription-actions">
+              <button class="btn btn-ghost btn-sm">View</button>
+              <button class="btn btn-primary btn-sm">Renew</button>
+            </div>
+          </article>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- NEW PRESCRIPTION MODAL -->
+    <div class="modal-backdrop" id="newRxModal">
+      <div class="modal modal-wide">
+        <div class="modal-header">
+          <h2>New Prescription</h2>
+          <button class="modal-close" id="closeNewRx">✕</button>
+        </div>
+        <form id="rxForm">
+          <div class="form-grid cols-1">
+            <div class="form-group">
+              <label for="rxPatient">Patient</label>
+              <select id="rxPatient" required>
+                <option value="">Select patient</option>
+                <option>John Doe</option>
+                <option>Amina Patel</option>
+                <option>Michael Brown</option>
+                <option>Sarah Johnson</option>
+                <option>Liam Kim</option>
+                <option>Nina Roberts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="rxMed">Medication Name</label>
+              <input type="text" id="rxMed" placeholder="e.g. Amlodipine" required />
+            </div>
+            <div class="form-group">
+              <label for="rxDose">Dosage</label>
+              <input type="text" id="rxDose" placeholder="e.g. 10 mg" required />
+            </div>
+            <div class="form-group">
+              <label for="rxFreq">Frequency</label>
+              <select id="rxFreq">
+                <option>Once daily</option>
+                <option>Twice daily</option>
+                <option>Three times daily</option>
+                <option>Once nightly</option>
+                <option>As needed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="rxDuration">Duration</label>
+              <input type="text" id="rxDuration" placeholder="e.g. 30 days" />
+            </div>
+            <div class="form-group">
+              <label for="rxInstructions">Instructions</label>
+              <textarea id="rxInstructions" placeholder="Special instructions for the patient…"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelNewRx">Cancel</button>
+            <button type="submit" class="btn btn-primary">Issue Prescription</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="prescriptions.js"></script>
+  </body>
+</html>

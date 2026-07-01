@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="schedule.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a class="active" href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Today's Schedule</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="schedule-header">
+          <div class="date-nav">
+            <button class="btn btn-ghost" id="prevDay">← Yesterday</button>
+            <span class="current-date" id="currentDate">Monday, July 8, 2026</span>
+            <button class="btn btn-ghost" id="nextDay">Tomorrow →</button>
+          </div>
+          <button class="btn btn-primary" id="addSlotBtn">+ Add Slot</button>
+        </div>
+
+        <div class="schedule-grid">
+          
+          <!-- TIME SLOTS -->
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">09:00</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="appointment-card booked">
+              <div class="patient-avatar">JD</div>
+              <div class="appointment-info">
+                <h4>John Doe</h4>
+                <p>Follow-up Visit</p>
+                <span class="room">Room 3</span>
+              </div>
+              <div class="appointment-status">
+                <span class="badge badge-green">Confirmed</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-primary btn-sm">Start</button>
+                <button class="btn btn-ghost btn-sm">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">09:30</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="slot-empty">
+              <span>Available</span>
+              <button class="btn btn-ghost btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">10:00</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="slot-empty">
+              <span>Available</span>
+              <button class="btn btn-ghost btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">10:30</span>
+              <span class="duration">45 min</span>
+            </div>
+            <div class="appointment-card booked">
+              <div class="patient-avatar">AP</div>
+              <div class="appointment-info">
+                <h4>Amina Patel</h4>
+                <p>Lab Review</p>
+                <span class="room">Room 3</span>
+              </div>
+              <div class="appointment-status">
+                <span class="badge badge-green">Confirmed</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-primary btn-sm">Start</button>
+                <button class="btn btn-ghost btn-sm">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">11:15</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="slot-empty">
+              <span>Available</span>
+              <button class="btn btn-ghost btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="time-slot lunch-break">
+            <div class="slot-time">
+              <span class="time">12:00</span>
+              <span class="duration">60 min</span>
+            </div>
+            <div class="break-slot">
+              <span>Lunch Break</span>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">13:00</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="appointment-card booked">
+              <div class="patient-avatar">MB</div>
+              <div class="appointment-info">
+                <h4>Michael Brown</h4>
+                <p>Consultation</p>
+                <span class="room">Room 2</span>
+              </div>
+              <div class="appointment-status">
+                <span class="badge badge-yellow">Waiting</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-primary btn-sm">Start</button>
+                <button class="btn btn-ghost btn-sm">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">13:30</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="slot-empty">
+              <span>Available</span>
+              <button class="btn btn-ghost btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">14:00</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="appointment-card booked">
+              <div class="patient-avatar">SJ</div>
+              <div class="appointment-info">
+                <h4>Sarah Johnson</h4>
+                <p>Check-up</p>
+                <span class="room">Room 3</span>
+              </div>
+              <div class="appointment-status">
+                <span class="badge badge-green">Confirmed</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-primary btn-sm">Start</button>
+                <button class="btn btn-ghost btn-sm">Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="time-slot">
+            <div class="slot-time">
+              <span class="time">14:30</span>
+              <span class="duration">30 min</span>
+            </div>
+            <div class="slot-empty">
+              <span>Available</span>
+              <button class="btn btn-ghost btn-sm">Book</button>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="schedule.js"></script>
+  </body>
+</html>

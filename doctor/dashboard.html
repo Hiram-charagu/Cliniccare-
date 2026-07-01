@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a class="active" href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Good morning, Dr. Emily</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div>
+              <strong>Dr. Emily Chen</strong>
+              <small>Cardiology</small>
+            </div>
+          </div>
+        </header>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p>Today's Appointments</p>
+            <strong>12</strong>
+            <span class="good">4 completed</span>
+          </article>
+          <article class="stat-card">
+            <p>Assigned Patients</p>
+            <strong>38</strong>
+            <span>Active panel</span>
+          </article>
+          <article class="stat-card">
+            <p>Pending Notes</p>
+            <strong>5</strong>
+            <span class="warn">Review needed</span>
+          </article>
+          <article class="stat-card">
+            <p>Messages</p>
+            <strong>9</strong>
+            <span class="warn">3 urgent</span>
+          </article>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Today's Schedule</h2>
+              <a href="schedule.html" class="btn btn-ghost" style="font-size:0.8rem;padding:6px 12px">View all</a>
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">09:00</div>
+                <div class="schedule-details">
+                  <h4>John Doe</h4>
+                  <p>Follow-up · Room 3</p>
+                </div>
+                <button class="btn btn-primary btn-sm">Start</button>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">10:30</div>
+                <div class="schedule-details">
+                  <h4>Amina Patel</h4>
+                  <p>Lab review · Room 3</p>
+                </div>
+                <button class="btn btn-primary btn-sm">Start</button>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">12:00</div>
+                <div class="schedule-details">
+                  <h4>Michael Brown</h4>
+                  <p>Consultation · Room 2</p>
+                </div>
+                <span class="badge badge-yellow">Waiting</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Today's Tasks</h2>
+            </div>
+            <div class="task-list">
+              <div class="task-item">
+                <input type="checkbox" id="task1" />
+                <label for="task1">Review ECG result — John Doe</label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task2" />
+                <label for="task2">Sign 3 prescriptions</label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task3" />
+                <label for="task3">Update care plan — Amina Patel</label>
+              </div>
+              <div class="task-item completed">
+                <input type="checkbox" id="task4" checked />
+                <label for="task4">Morning ward round completed</label>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel panel-wide">
+            <div class="panel-header">
+              <h2>Recent Activity</h2>
+            </div>
+            <ul class="activity-list">
+              <li>
+                <strong>09:00</strong>
+                <span>John Doe consultation completed</span>
+                <em>Done</em>
+              </li>
+              <li>
+                <strong>10:30</strong>
+                <span>Amina Patel lab results reviewed</span>
+                <em>Done</em>
+              </li>
+              <li>
+                <strong>12:10</strong>
+                <span>Michael Brown prescription signed</span>
+                <em>Done</em>
+              </li>
+              <li>
+                <strong>14:00</strong>
+                <span>Sarah Johnson care plan updated</span>
+                <em>Updated</em>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <script src="doctor.js"></script>
+  </body>
+</html>

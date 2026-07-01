@@ -1,0 +1,96 @@
+/* ============================================================
+   records.css — Doctor Records page styles
+   ============================================================ */
+
+.records-filter-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.record-tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.record-tab:hover {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+}
+
+.record-tab.active {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+  font-weight: 700;
+}
+
+/* ── RECORDS GRID ── */
+.records-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.record-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  flex-wrap: wrap;
+}
+
+.record-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.06);
+}
+
+.record-card.hidden {
+  display: none;
+}
+
+.record-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.record-icon-blue   { background: var(--blue-tint);   color: var(--blue); }
+.record-icon-purple { background: var(--purple-tint);  color: var(--purple); }
+.record-icon-gray   { background: var(--surface-2);    color: var(--muted); }
+
+.record-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-info h3 {
+  margin: 0 0 3px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.record-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}

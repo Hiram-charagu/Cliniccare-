@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Patients — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="patients.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a class="active" href="patients.html">My Patients</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>My Patients</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="patients-filter-row">
+          <button class="patient-tab active" data-filter="all">All Patients</button>
+          <button class="patient-tab" data-filter="active">Active</button>
+          <button class="patient-tab" data-filter="new">New</button>
+          <button class="patient-tab" data-filter="critical">Critical</button>
+        </div>
+
+        <div class="section-actions">
+          <input class="portal-search" type="search" id="patientSearch" placeholder="Search patients…" />
+          <button class="btn btn-primary" id="addPatientBtn">+ Add Patient</button>
+        </div>
+
+        <div class="table-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Age / Gender</th>
+                <th>Condition</th>
+                <th>Last Visit</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="patientTable">
+              <tr data-status="active">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar">JD</div>
+                    <div>
+                      <strong>John Doe</strong>
+                      <span>P-001</span>
+                    </div>
+                  </div>
+                </td>
+                <td>42 / Male</td>
+                <td>Hypertension</td>
+                <td>Jul 01, 2026</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="active">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar avatar-teal">AP</div>
+                    <div>
+                      <strong>Amina Patel</strong>
+                      <span>P-002</span>
+                    </div>
+                  </div>
+                </td>
+                <td>35 / Female</td>
+                <td>Arrhythmia</td>
+                <td>Jun 28, 2026</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="critical">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar avatar-red">MB</div>
+                    <div>
+                      <strong>Michael Brown</strong>
+                      <span>P-003</span>
+                    </div>
+                  </div>
+                </td>
+                <td>58 / Male</td>
+                <td>Heart Failure</td>
+                <td>Jul 03, 2026</td>
+                <td><span class="badge badge-red">Critical</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="new">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar avatar-green">SJ</div>
+                    <div>
+                      <strong>Sarah Johnson</strong>
+                      <span>P-004</span>
+                    </div>
+                  </div>
+                </td>
+                <td>29 / Female</td>
+                <td>Chest Pain</td>
+                <td>Jul 07, 2026</td>
+                <td><span class="badge badge-blue">New</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="active">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar">LK</div>
+                    <div>
+                      <strong>Liam Kim</strong>
+                      <span>P-005</span>
+                    </div>
+                  </div>
+                </td>
+                <td>47 / Male</td>
+                <td>Coronary Artery Disease</td>
+                <td>Jun 20, 2026</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="new">
+                <td>
+                  <div class="patient-name-cell">
+                    <div class="patient-avatar avatar-purple">NR</div>
+                    <div>
+                      <strong>Nina Roberts</strong>
+                      <span>P-006</span>
+                    </div>
+                  </div>
+                </td>
+                <td>33 / Female</td>
+                <td>Palpitations</td>
+                <td>Jul 06, 2026</td>
+                <td><span class="badge badge-blue">New</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-sm">View</button>
+                    <button class="btn btn-primary btn-sm">Schedule</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- ADD PATIENT MODAL -->
+    <div class="modal-backdrop" id="addPatientModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Add Patient</h2>
+          <button class="modal-close" id="closeAddPatient">✕</button>
+        </div>
+        <form id="addPatientForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="newFirst">First Name</label>
+              <input type="text" id="newFirst" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label for="newLast">Last Name</label>
+              <input type="text" id="newLast" placeholder="Last name" required />
+            </div>
+            <div class="form-group">
+              <label for="newDOB">Date of Birth</label>
+              <input type="date" id="newDOB" required />
+            </div>
+            <div class="form-group">
+              <label for="newGender">Gender</label>
+              <select id="newGender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group form-group-wide">
+              <label for="newCondition">Condition / Reason</label>
+              <input type="text" id="newCondition" placeholder="Primary condition" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelAddPatient">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="patients.js"></script>
+  </body>
+</html>

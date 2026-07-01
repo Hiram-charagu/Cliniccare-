@@ -1,0 +1,84 @@
+/* ============================================================
+   patients.css — My Patients page styles
+   ============================================================ */
+
+.patients-filter-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.patient-tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.patient-tab:hover {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+}
+
+.patient-tab.active {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+  font-weight: 700;
+}
+
+/* ── NAME CELL ── */
+.patient-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.patient-name-cell strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.patient-name-cell span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── AVATAR VARIANTS ── */
+.patient-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.avatar-teal   { background: linear-gradient(135deg, #0d9488, #0f766e); }
+.avatar-red    { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+.avatar-green  { background: linear-gradient(135deg, #16a34a, #15803d); }
+.avatar-purple { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+
+/* ── ROW ACTIONS ── */
+.row-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ── FORM WIDE GROUP ── */
+.form-group-wide {
+  grid-column: 1 / -1;
+}

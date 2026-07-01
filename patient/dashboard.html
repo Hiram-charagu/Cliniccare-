@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="patient.css" />
+  </head>
+  <body>
+    <nav class="portal-nav">
+      <div class="nav-brand">
+        <span class="brand-mark">CC</span>
+        <span>ClinicCare</span>
+      </div>
+      <div class="nav-profile">
+        <span id="userName">Patient</span>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <div class="portal-layout">
+      <aside class="portal-sidebar">
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-section="dashboard">
+            <span>📊</span> Dashboard
+          </button>
+          <button class="nav-item" data-section="appointments">
+            <span>📅</span> Appointments
+          </button>
+          <button class="nav-item" data-section="records">
+            <span>📋</span> Medical Records
+          </button>
+          <button class="nav-item" data-section="billing">
+            <span>💳</span> Billing
+          </button>
+          <button class="nav-item" data-section="messages">
+            <span>✉️</span> Messages
+          </button>
+          <button class="nav-item" data-section="profile">
+            <span>👤</span> Profile
+          </button>
+        </nav>
+      </aside>
+
+      <main class="portal-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+            <p>Welcome back to your patient portal</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h3>2</h3>
+              <p>Upcoming Appointments</p>
+            </div>
+            <div class="stat-card">
+              <h3>$125.50</h3>
+              <p>Outstanding Balance</p>
+            </div>
+            <div class="stat-card">
+              <h3>3</h3>
+              <p>Unread Messages</p>
+            </div>
+            <div class="stat-card">
+              <h3>12</h3>
+              <p>Medical Records</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <h2>Next Appointment</h2>
+              <div class="appointment-card">
+                <div class="appointment-date">
+                  <span class="day">15</span>
+                  <span class="month">Dec</span>
+                </div>
+                <div class="appointment-details">
+                  <h4>Dr. Sarah Johnson</h4>
+                  <p>General Checkup</p>
+                  <p>10:30 AM - Room 205</p>
+                </div>
+                <button class="btn btn-outline">View Details</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Recent Messages</h2>
+              <div class="message-list">
+                <div class="message-item">
+                  <div class="message-content">
+                    <h4>Lab Results Available</h4>
+                    <p>Your blood test results are ready for review</p>
+                    <span class="message-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="message-item">
+                  <div class="message-content">
+                    <h4>Prescription Refill</h4>
+                    <p>Your prescription is ready for pickup</p>
+                    <span class="message-time">1 day ago</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline">View All Messages</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments" class="content-section">
+          <div class="section-header">
+            <h1>Appointments</h1>
+            <button class="btn btn-primary">Book New Appointment</button>
+          </div>
+
+          <div class="appointments-grid">
+            <div class="appointment-card">
+              <div class="appointment-date">
+                <span class="day">15</span>
+                <span class="month">Dec</span>
+              </div>
+              <div class="appointment-details">
+                <h4>Dr. Sarah Johnson</h4>
+                <p>General Checkup</p>
+                <p>10:30 AM - Room 205</p>
+                <span class="status confirmed">Confirmed</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-outline">Reschedule</button>
+                <button class="btn btn-danger">Cancel</button>
+              </div>
+            </div>
+
+            <div class="appointment-card">
+              <div class="appointment-date">
+                <span class="day">22</span>
+                <span class="month">Dec</span>
+              </div>
+              <div class="appointment-details">
+                <h4>Dr. Michael Chen</h4>
+                <p>Follow-up Consultation</p>
+                <p>2:15 PM - Room 301</p>
+                <span class="status pending">Pending</span>
+              </div>
+              <div class="appointment-actions">
+                <button class="btn btn-outline">Reschedule</button>
+                <button class="btn btn-danger">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Medical Records Section -->
+        <section id="records" class="content-section">
+          <div class="section-header">
+            <h1>Medical Records</h1>
+            <button class="btn btn-primary">Request Records</button>
+          </div>
+
+          <div class="records-list">
+            <div class="record-item">
+              <div class="record-info">
+                <h4>Blood Test Results</h4>
+                <p>Dr. Sarah Johnson • Dec 10, 2023</p>
+              </div>
+              <button class="btn btn-outline">Download</button>
+            </div>
+            <div class="record-item">
+              <div class="record-info">
+                <h4>X-Ray Report</h4>
+                <p>Dr. Michael Chen • Nov 28, 2023</p>
+              </div>
+              <button class="btn btn-outline">Download</button>
+            </div>
+            <div class="record-item">
+              <div class="record-info">
+                <h4>Prescription History</h4>
+                <p>Dr. Sarah Johnson • Nov 15, 2023</p>
+              </div>
+              <button class="btn btn-outline">Download</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Billing Section -->
+        <section id="billing" class="content-section">
+          <div class="section-header">
+            <h1>Billing</h1>
+            <button class="btn btn-primary">Pay Now</button>
+          </div>
+
+          <div class="billing-summary">
+            <div class="balance-card">
+              <h3>Current Balance</h3>
+              <div class="balance-amount">$125.50</div>
+              <button class="btn btn-primary">Pay Balance</button>
+            </div>
+          </div>
+
+          <div class="billing-history">
+            <h3>Recent Bills</h3>
+            <div class="bill-item">
+              <div class="bill-info">
+                <h4>General Consultation</h4>
+                <p>Dec 1, 2023 • Dr. Sarah Johnson</p>
+              </div>
+              <div class="bill-amount">$85.00</div>
+              <span class="bill-status unpaid">Unpaid</span>
+            </div>
+            <div class="bill-item">
+              <div class="bill-info">
+                <h4>Lab Tests</h4>
+                <p>Nov 20, 2023 • ClinicCare Lab</p>
+              </div>
+              <div class="bill-amount">$40.50</div>
+              <span class="bill-status unpaid">Unpaid</span>
+            </div>
+            <div class="bill-item">
+              <div class="bill-info">
+                <h4>X-Ray Imaging</h4>
+                <p>Nov 15, 2023 • Radiology Dept</p>
+              </div>
+              <div class="bill-amount">$150.00</div>
+              <span class="bill-status paid">Paid</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messages" class="content-section">
+          <div class="section-header">
+            <h1>Messages</h1>
+            <button class="btn btn-primary">New Message</button>
+          </div>
+
+          <div class="messages-list">
+            <div class="message-card unread">
+              <div class="message-header">
+                <h4>Lab Results Available</h4>
+                <span class="message-time">2 hours ago</span>
+              </div>
+              <p>Your blood test results are ready for review. Please log in to your portal to view the detailed report.</p>
+              <div class="message-actions">
+                <button class="btn btn-outline">Reply</button>
+                <button class="btn btn-outline">Mark as Read</button>
+              </div>
+            </div>
+
+            <div class="message-card unread">
+              <div class="message-header">
+                <h4>Prescription Refill Ready</h4>
+                <span class="message-time">1 day ago</span>
+              </div>
+              <p>Your prescription refill is ready for pickup at our pharmacy. Please bring a valid ID.</p>
+              <div class="message-actions">
+                <button class="btn btn-outline">Reply</button>
+                <button class="btn btn-outline">Mark as Read</button>
+              </div>
+            </div>
+
+            <div class="message-card">
+              <div class="message-header">
+                <h4>Appointment Reminder</h4>
+                <span class="message-time">3 days ago</span>
+              </div>
+              <p>This is a reminder for your upcoming appointment on Dec 15th at 10:30 AM with Dr. Sarah Johnson.</p>
+              <div class="message-actions">
+                <button class="btn btn-outline">Reply</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="content-section">
+          <div class="section-header">
+            <h1>Profile</h1>
+            <button class="btn btn-primary">Edit Profile</button>
+          </div>
+
+          <div class="profile-grid">
+            <div class="card">
+              <h3>Personal Information</h3>
+              <div class="profile-field">
+                <label>Full Name</label>
+                <p>Jane Smith</p>
+              </div>
+              <div class="profile-field">
+                <label>Date of Birth</label>
+                <p>March 15, 1990</p>
+              </div>
+              <div class="profile-field">
+                <label>Gender</label>
+                <p>Female</p>
+              </div>
+              <div class="profile-field">
+                <label>Blood Type</label>
+                <p>O+</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Contact Information</h3>
+              <div class="profile-field">
+                <label>Email</label>
+                <p>jane.smith@email.com</p>
+              </div>
+              <div class="profile-field">
+                <label>Phone</label>
+                <p>(555) 123-4567</p>
+              </div>
+              <div class="profile-field">
+                <label>Address</label>
+                <p>123 Main St, City, State 12345</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Emergency Contact</h3>
+              <div class="profile-field">
+                <label>Name</label>
+                <p>John Smith</p>
+              </div>
+              <div class="profile-field">
+                <label>Relationship</label>
+                <p>Spouse</p>
+              </div>
+              <div class="profile-field">
+                <label>Phone</label>
+                <p>(555) 987-6543</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../assets/js/auth-guard.js"></script>
+    <script src="patient.js"></script>
+  </body>
+</html>

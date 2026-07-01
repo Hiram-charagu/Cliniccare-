@@ -1,0 +1,36 @@
+/* ============================================================
+   appointments.css — Doctor Appointments page styles
+   ============================================================ */
+
+.appt-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.appt-tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.appt-tab:hover {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+}
+
+.appt-tab.active {
+  background: var(--blue-tint);
+  color: var(--blue);
+  border-color: var(--border-hover);
+  font-weight: 700;
+}

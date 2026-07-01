@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointments — Doctor Portal — ClinicCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="appointments.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+
+      <aside class="sidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CC</span>
+          ClinicCare
+        </a>
+        <nav class="portal-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="patients.html">My Patients</a>
+          <a class="active" href="appointments.html">Appointments</a>
+          <a href="consultations.html">Consultations</a>
+          <a href="prescriptions.html">Prescriptions</a>
+          <a href="records.html">Records</a>
+          <a href="messages.html">Messages</a>
+          <a href="profile.html">Profile</a>
+          <a class="logout" href="../login.html">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="portal-main">
+        <header class="topbar">
+          <div class="page-header-left">
+            <p class="eyebrow">Doctor Portal</p>
+            <h1>Appointments</h1>
+          </div>
+          <div class="user-chip">
+            <div class="user-chip-avatar">EC</div>
+            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+          </div>
+        </header>
+
+        <div class="appt-tabs">
+          <button class="appt-tab active" data-filter="all">All</button>
+          <button class="appt-tab" data-filter="confirmed">Confirmed</button>
+          <button class="appt-tab" data-filter="pending">Pending</button>
+          <button class="appt-tab" data-filter="completed">Completed</button>
+          <button class="appt-tab" data-filter="cancelled">Cancelled</button>
+        </div>
+
+        <div class="section-actions">
+          <input class="portal-search" type="search" id="apptSearch" placeholder="Search appointments…" />
+          <button class="btn btn-primary" id="openBookModal">+ New Appointment</button>
+        </div>
+
+        <div class="table-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Room</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="apptTable">
+              <tr data-status="confirmed">
+                <td>John Doe</td>
+                <td>Jul 08, 2026</td>
+                <td>09:00 AM</td>
+                <td>Follow-up Visit</td>
+                <td>Room 3</td>
+                <td><span class="badge badge-green">Confirmed</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+              <tr data-status="confirmed">
+                <td>Amina Patel</td>
+                <td>Jul 08, 2026</td>
+                <td>10:30 AM</td>
+                <td>Lab Review</td>
+                <td>Room 3</td>
+                <td><span class="badge badge-green">Confirmed</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+              <tr data-status="pending">
+                <td>Michael Brown</td>
+                <td>Jul 08, 2026</td>
+                <td>01:00 PM</td>
+                <td>Consultation</td>
+                <td>Room 2</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+              <tr data-status="confirmed">
+                <td>Sarah Johnson</td>
+                <td>Jul 09, 2026</td>
+                <td>09:00 AM</td>
+                <td>New Patient Check-up</td>
+                <td>Room 1</td>
+                <td><span class="badge badge-green">Confirmed</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+              <tr data-status="completed">
+                <td>Liam Kim</td>
+                <td>Jun 20, 2026</td>
+                <td>11:00 AM</td>
+                <td>ECG Review</td>
+                <td>Room 3</td>
+                <td><span class="badge badge-blue">Completed</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+              <tr data-status="cancelled">
+                <td>Nina Roberts</td>
+                <td>Jun 18, 2026</td>
+                <td>02:00 PM</td>
+                <td>Consultation</td>
+                <td>Room 2</td>
+                <td><span class="badge badge-red">Cancelled</span></td>
+                <td><button class="btn btn-ghost btn-sm">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- NEW APPOINTMENT MODAL -->
+    <div class="modal-backdrop" id="bookModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>New Appointment</h2>
+          <button class="modal-close" id="closeBookModal">✕</button>
+        </div>
+        <form id="bookForm">
+          <div class="form-grid cols-1">
+            <div class="form-group">
+              <label for="apptPatient">Patient</label>
+              <select id="apptPatient" required>
+                <option value="">Select patient</option>
+                <option>John Doe</option>
+                <option>Amina Patel</option>
+                <option>Michael Brown</option>
+                <option>Sarah Johnson</option>
+                <option>Liam Kim</option>
+                <option>Nina Roberts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apptType">Appointment Type</label>
+              <select id="apptType">
+                <option>Follow-up Visit</option>
+                <option>Lab Review</option>
+                <option>Consultation</option>
+                <option>New Patient Check-up</option>
+                <option>ECG Review</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apptDate">Date</label>
+              <input type="date" id="apptDate" required />
+            </div>
+            <div class="form-group">
+              <label for="apptTime">Time</label>
+              <select id="apptTime">
+                <option>09:00 AM</option>
+                <option>09:30 AM</option>
+                <option>10:00 AM</option>
+                <option>10:30 AM</option>
+                <option>11:00 AM</option>
+                <option>01:00 PM</option>
+                <option>02:00 PM</option>
+                <option>03:00 PM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apptRoom">Room</label>
+              <select id="apptRoom">
+                <option>Room 1</option>
+                <option>Room 2</option>
+                <option>Room 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apptNotes">Notes (optional)</label>
+              <textarea id="apptNotes" placeholder="Any notes for this appointment…"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-ghost" id="cancelBookModal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="doctor.js"></script>
+    <script src="appointments.js"></script>
+  </body>
+</html>
