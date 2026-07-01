@@ -37,12 +37,12 @@
         <header class="topbar">
           <div class="page-header-left">
             <p class="eyebrow">Doctor Portal</p>
-            <h1>Good morning, Dr. Emily</h1>
+            <h1 data-cc-greeting>Good morning, Dr. Emily</h1>
           </div>
           <div class="user-chip">
-            <div class="user-chip-avatar">EC</div>
+            <div class="user-chip-avatar" data-cc-initials>EC</div>
             <div>
-              <strong>Dr. Emily Chen</strong>
+              <strong data-cc-name>Dr. Emily Chen</strong>
               <small>Cardiology</small>
             </div>
           </div>
@@ -163,5 +163,5 @@
     </div>
 
     <script src="doctor.js"></script>
-  </body>
-</html>
+    <script src="../assets/js/auth.js"></script>
+    <script>CC.initPortal('doctor');</script>

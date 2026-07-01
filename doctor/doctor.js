@@ -1,118 +1,36 @@
-// Doctor Portal JavaScript
+// Doctor Portal — auth guard + user injection
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize portal
-    initializePortal();
-    
-    // Navigation functionality
-    initializeNavigation();
-    
-    // Logout functionality
-    initializeLogout();
-    
-    // Load user data
-    loadUserData();
-});
+  var raw = localStorage.getItem('cliniccare_user');
+  if (!raw) { window.location.replace('../login.html'); return; }
 
-function initializePortal() {
-    // Check authentication
-    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    if (!user.email || user.role !== 'doctor') {
-        window.location.href = '../login.html';
-        return;
-    }
-    
-    console.log('Doctor portal initialized for:', user.email);
-}
+  var user;
+  try { user = JSON.parse(raw); } catch (e) { window.location.replace('../login.html'); return; }
+  if (!user || user.role !== 'doctor') { window.location.replace('../login.html'); return; }
 
-function initializeNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = document.querySelectorAll('.content-section');
-    
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const targetSection = this.dataset.section;
-            
-            // Remove active class from all nav items and sections
-            navItems.forEach(nav => nav.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked nav item and target section
-            this.classList.add('active');
-            document.getElementById(targetSection).classList.add('active');
-        });
+  var name     = user.name  || 'Doctor';
+  var email    = user.email || '';
+  var initials = (name.trim().split(' ').map(function(p){ return p[0]; }).join('')).toUpperCase().slice(0,2);
+  var first    = name.trim().split(' ')[0];
+  var h        = new Date().getHours();
+  var greet    = 'Good ' + (h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening') + ', ' + name;
+
+  document.querySelectorAll('[data-cc-name]').forEach(function(el){ el.textContent = name; });
+  document.querySelectorAll('[data-cc-name-input]').forEach(function(el){ el.value = name; });
+  document.querySelectorAll('[data-cc-first]').forEach(function(el){ el.textContent = first; });
+  document.querySelectorAll('[data-cc-initials]').forEach(function(el){ el.textContent = initials; });
+  document.querySelectorAll('[data-cc-greeting]').forEach(function(el){ el.textContent = greet; });
+  document.querySelectorAll('[data-cc-email]').forEach(function(el){
+    if (el.tagName === 'INPUT') el.value = email;
+    else el.textContent = email;
+  });
+
+  // Logout
+  document.querySelectorAll('.logout').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      localStorage.removeItem('cliniccare_user');
+      window.location.href = '../login.html';
     });
-}
-
-function initializeLogout() {
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('currentUser');
-            localStorage.removeItem('isLoggedIn');
-            window.location.href = '../login.html';
-        });
-    }
-}
-
-function loadUserData() {
-    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    const userName = document.getElementById('userName');
-    
-    if (userName && user.firstName && user.lastName) {
-        userName.textContent = `Dr. ${user.firstName} ${user.lastName}`;
-    }
-}
-
-// Schedule management
-function addAppointment() {
-    alert('Add appointment functionality would be implemented here');
-}
-
-function startConsultation(appointmentId) {
-    alert(`Starting consultation for appointment ${appointmentId} - functionality would be implemented here`);
-}
-
-// Patient management
-function viewPatient(patientId) {
-    alert(`Viewing patient ${patientId} - functionality would be implemented here`);
-}
-
-function schedulePatientAppointment(patientId) {
-    alert(`Scheduling appointment for patient ${patientId} - functionality would be implemented here`);
-}
-
-// Consultation management
-function newConsultation() {
-    alert('New consultation functionality would be implemented here');
-}
-
-function editConsultationNotes(consultationId) {
-    alert(`Editing notes for consultation ${consultationId} - functionality would be implemented here`);
-}
-
-function printConsultationReport(consultationId) {
-    alert(`Printing report for consultation ${consultationId} - functionality would be implemented here`);
-}
-
-// Prescription management
-function newPrescription() {
-    alert('New prescription functionality would be implemented here');
-}
-
-function editPrescription(prescriptionId) {
-    alert(`Editing prescription ${prescriptionId} - functionality would be implemented here`);
-}
-
-function printPrescription(prescriptionId) {
-    alert(`Printing prescription ${prescriptionId} - functionality would be implemented here`);
-}
-
-function refillPrescription(prescriptionId) {
-    alert(`Refilling prescription ${prescriptionId} - functionality would be implemented here`);
-}
-
-// Profile management
-function updateProfile() {
-    alert('Profile update functionality would be implemented here');
-}
+  });
+});

@@ -39,8 +39,8 @@
             <h1>My Profile</h1>
           </div>
           <div class="user-chip">
-            <div class="user-chip-avatar">EC</div>
-            <div><strong>Dr. Emily Chen</strong><small>Cardiology</small></div>
+            <div class="user-chip-avatar" data-cc-initials>EC</div>
+            <div><strong data-cc-name>Dr. Emily Chen</strong><small>Cardiology</small></div>
           </div>
         </header>
 
@@ -55,7 +55,7 @@
             <form class="form-grid" id="profForm">
               <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" value="Dr. Emily Chen" disabled />
+                <input type="text" id="fullName" data-cc-name-input value="Dr. Emily Chen" disabled />
               </div>
               <div class="form-group">
                 <label for="specialty">Specialty</label>
@@ -71,7 +71,7 @@
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" value="doctor@cliniccare.com" disabled />
+                <input type="email" id="email" data-cc-email value="doctor@cliniccare.com" disabled />
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
@@ -212,5 +212,7 @@
 
     <script src="doctor.js"></script>
     <script src="profile.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script>CC.initPortal('doctor');</script>
   </body>
 </html>
