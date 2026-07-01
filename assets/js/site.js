@@ -1,5 +1,22 @@
 (function () {
   const CC = window.CC || {};
+  let firebasePromise = null;
+
+  function loadFirebase() {
+    if (!firebasePromise) firebasePromise = import('./firebase.js');
+    return firebasePromise;
+  }
+
+  function getInitials(name) {
+    if (!name) return '??';
+    const parts = name.trim().split(' ');
+    return (parts[0][0] + (parts[parts.length - 1][0] || '')).toUpperCase();
+  }
+
+  function getFirstName(name) {
+    if (!name) return 'there';
+    return name.trim().split(' ')[0];
+  }
 
   function initNav() {
     const hamburger = document.getElementById("hamburger");
@@ -243,6 +260,50 @@
     initCounters();
     initHeroTilt();
     initHeroMesh();
+
+    loadFirebase().then(function (firebase) {
+      firebase.useSessionPersistence().then(function () {
+        firebase.auth.onAuthStateChanged(async function (user) {
+          const actions = document.querySelector('.nav-actions');
+          const mobileMenu = document.querySelector('.mobile-menu');
+          if (!user || !actions) return;
+
+          const profile = await firebase.ensureUserProfile(user);
+          const portal = firebase.getPortalRoute(profile.role);
+          const first = getFirstName(profile.name || user.displayName || 'User');
+          const initials = getInitials(profile.name || user.displayName || 'User');
+
+          actions.innerHTML =
+            '<div class="nav-user-chip">' +
+              '<div class="nav-user-avatar">' + initials + '</div>' +
+              '<span>Hi, ' + first + '</span>' +
+            '</div>' +
+            '<a class="btn btn-primary" href="' + portal + '">Go to Portal →</a>';
+
+          if (mobileMenu) {
+            const signIn = mobileMenu.querySelector('a[href="login.html"]');
+            const getStarted = mobileMenu.querySelector('a[href="signup.html"]');
+            if (signIn) signIn.remove();
+            if (getStarted) {
+              getStarted.textContent = 'Go to Portal →';
+              getStarted.href = portal;
+            }
+          }
+
+          const heroActions = document.querySelector('.hero-actions');
+          if (heroActions) {
+            heroActions.innerHTML =
+              '<a class="btn btn-primary btn-lg" href="' + portal + '">Go to Your Portal →</a>' +
+              '<a class="btn btn-ghost btn-lg" href="#portals">Explore Features</a>';
+          }
+
+          const heroBadge = document.querySelector('.hero-badge');
+          if (heroBadge) {
+            heroBadge.innerHTML = '<span class="badge-dot"></span> Welcome back, ' + first + '!';
+          }
+        });
+      });
+    });
   };
 
   window.CC = CC;

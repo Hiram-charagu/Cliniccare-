@@ -1,0 +1,117 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function userExists() {
+      return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function userRole() {
+      return userExists() ? userDoc().data.role : null;
+    }
+
+    function isAdmin() {
+      return userRole() == 'admin';
+    }
+
+    function isDoctor() {
+      return userRole() == 'doctor';
+    }
+
+    function isPatient() {
+      return userRole() == 'patient';
+    }
+
+    function isSelf(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow read: if isAdmin() || isSelf(userId);
+      allow create: if signedIn() && (isAdmin() || isSelf(userId))
+        && request.resource.data.uid == request.auth.uid;
+      allow update: if isAdmin() || isSelf(userId);
+      allow delete: if isAdmin();
+    }
+
+    match /departments/{departmentId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /appointments/{appointmentId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+      allow create: if signedIn();
+      allow update, delete: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+    }
+
+    match /medicalRecords/{recordId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+      allow create, update, delete: if isAdmin() || isDoctor();
+    }
+
+    match /prescriptions/{prescriptionId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+      allow create, update, delete: if isAdmin() || isDoctor();
+    }
+
+    match /consultations/{consultationId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+      allow create, update, delete: if isAdmin() || isDoctor();
+    }
+
+    match /carePlans/{carePlanId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid)
+        || (isDoctor() && resource.data.doctorId == request.auth.uid);
+      allow create, update, delete: if isAdmin() || isDoctor();
+    }
+
+    match /billing/{billId} {
+      allow read: if isAdmin()
+        || (isPatient() && resource.data.patientId == request.auth.uid);
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /messages/{messageId} {
+      allow read: if isAdmin()
+        || isSelf(resource.data.senderId)
+        || isSelf(resource.data.recipientId);
+      allow create: if signedIn();
+      allow update, delete: if isAdmin()
+        || isSelf(resource.data.senderId)
+        || isSelf(resource.data.recipientId);
+    }
+
+    match /logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /settings/{settingId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
